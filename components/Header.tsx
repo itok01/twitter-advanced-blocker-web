@@ -4,6 +4,7 @@ import { AppBar, Toolbar, Typography, IconButton, Button, Link } from '@material
 import styles from '../styles/Header.module.css'
 
 const title = "Advanced Blocker";
+const homeUrl = "https://localhost/";
 const authUrl = "https://localhost/api/auth";
 
 export default function Header() {
@@ -11,7 +12,9 @@ export default function Header() {
         <AppBar position="static">
             <Toolbar>
                 <Typography component="h1" variant="h6" className={styles.title}>
-                    {title}
+                    <Link href={homeUrl} color="inherit" underline="none">
+                        {title}
+                    </Link>
                 </Typography>
                 <Link href={authUrl} color="inherit" underline="none">
                     ログイン
