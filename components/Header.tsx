@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, IconButton, Button } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, IconButton, Button, Link } from '@material-ui/core';
 
 import styles from '../styles/Header.module.css'
 
@@ -13,9 +13,9 @@ export default function Header() {
                 <Typography component="h1" variant="h6" className={styles.title}>
                     {title}
                 </Typography>
-                <Button variant="text" color="inherit" onClick={() => window.open(authUrl, "_self")}>
+                <Link href={authUrl} color="inherit" underline="none">
                     ログイン
-                </Button>
+                </Link>
             </Toolbar>
         </AppBar>
     )
