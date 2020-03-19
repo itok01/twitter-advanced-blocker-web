@@ -9,7 +9,9 @@ export default function Layout(props: ContentProps) {
     return (
         <div>
             <Header />
-            {props.children}
+            <main>
+                {props.children}
+            </main>
         </div>
     )
 }
