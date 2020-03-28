@@ -1,14 +1,16 @@
 import Header from './Header';
+import { Auth } from './Header';
 import { ReactNode } from 'react';
 
-type ContentProps = {
+type Props = {
     children: ReactNode;
+    auth: Auth;
 };
 
-export default function Layout(props: ContentProps) {
+export default function Layout(props: Props) {
     return (
         <div>
-            <Header />
+            <Header auth={props.auth} />
             <main>
                 {props.children}
             </main>
