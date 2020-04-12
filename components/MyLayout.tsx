@@ -1,6 +1,7 @@
 import Header from './Header';
-import { Auth } from './Header';
 import { ReactNode } from 'react';
+
+import { Auth } from '../lib/auth';
 
 type Props = {
     children: ReactNode;

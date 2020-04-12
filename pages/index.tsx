@@ -1,9 +1,9 @@
 import { NextPageContext, NextPage } from 'next';
 import { parseCookies } from 'nookies'
+import { Link } from '@material-ui/core';
 
 import { Auth } from '../lib/auth';
 import Layout from '../components/MyLayout'
-import { Link } from '@material-ui/core';
 
 type Props = {
     auth: Auth;
