@@ -1,16 +1,12 @@
 import { AppBar, Toolbar, Typography, Link } from '@material-ui/core';
 
+import { Auth } from '../lib/auth';
 import styles from '../styles/Header.module.css'
 
 const title = "Advanced Blocker";
 const homeUrl = "https://localhost/";
 const signInUrl = "https://localhost/api/auth";
 const signOutUrl = "https://localhost/api/signout";
-
-export type Auth = {
-    token: string;
-    signedIn: boolean;
-};
 
 type Props = {
     auth: Auth;

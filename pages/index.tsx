@@ -1,20 +1,26 @@
 import { NextPageContext, NextPage } from 'next';
 import { parseCookies } from 'nookies'
 
-import { Auth } from '../components/Header';
+import { Auth } from '../lib/auth';
 import Layout from '../components/MyLayout'
+import { Link } from '@material-ui/core';
 
 type Props = {
     auth: Auth;
 };
 
-const Index: NextPage<Props> = props => (
-    <Layout auth={props.auth} >
-        <h1>Hello world!</h1>
-    </Layout>
-);
+const IndexPage: NextPage<Props> = props => {
+    return (
+        <Layout auth={props.auth} >
+            <h1>Hello world!</h1>
+            <Link href="https://localhost/blocklist">
+                ブロックリスト
+            </Link>
+        </Layout>
+    )
+};
 
-Index.getInitialProps = async (ctx: NextPageContext) => {
+IndexPage.getInitialProps = async (ctx: NextPageContext) => {
     let props: Props = { auth: { token: "", signedIn: false } };
 
     const cookies = parseCookies(ctx);
@@ -26,4 +32,4 @@ Index.getInitialProps = async (ctx: NextPageContext) => {
     return props;
 }
 
-export default Index;
+export default IndexPage;
