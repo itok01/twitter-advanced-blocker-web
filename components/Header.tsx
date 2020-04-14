@@ -4,9 +4,9 @@ import { Auth } from '../lib/auth';
 import styles from '../styles/Header.module.css'
 
 const title = "Advanced Blocker";
-const homeUrl = "https://localhost/";
-const signInUrl = "https://localhost/api/auth";
-const signOutUrl = "https://localhost/api/signout";
+const homeUrl = "/";
+const signInUrl = "/api/auth";
+const signOutUrl = "/api/signout";
 
 type Props = {
     auth: Auth;
