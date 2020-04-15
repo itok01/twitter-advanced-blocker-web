@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem, ListItemIcon, ListItemText, List, Link } from "@material-ui/core";
+import { ListItem, ListItemIcon, ListItemText, List, Link, Typography } from "@material-ui/core";
 import axios from 'axios';
 import https from 'https';
 
@@ -20,8 +20,8 @@ export type PostBlocklistResponse = {
     ok: boolean;
 };
 
-export async function getBlocklist(token: string): Promise<GetBlocklistResponse> {
-    const res = await axios.get(blocklistUrl + "?token=" + token, { httpsAgent: agent });
+export async function getBlocklist(token: string, user: string): Promise<GetBlocklistResponse> {
+    const res = await axios.get(blocklistUrl + "?token=" + token + "&user=" + user, { httpsAgent: agent });
     return res.data;
 }
 
@@ -33,21 +33,29 @@ export async function postBlocklist(token: string): Promise<PostBlocklistRespons
 export function generateBlocklist(blockedUser: User[]) {
     return (
         <List>
-            {blockedUser.map((user, index) =>
-                (
-                    <ListItem key={index} >
-                        <Link href={"https://twitter.com/" + user.id} underline="none" className={styles.user} >
-                            <ListItemIcon>
-                                <img src={user.icon} />
-                            </ListItemIcon>
-                            <ListItemText
-                                primary={user.name}
-                                secondary={"@" + user.id}
-                            />
-                        </Link>
-                    </ListItem>
-                )
-            )}
+            {
+                (blockedUser.length != 0) ?
+                    blockedUser.map((user, index) =>
+                        (
+                            <ListItem key={index} >
+                                <Link href={"https://twitter.com/" + user.id} underline="none" className={styles.user} >
+                                    <ListItemIcon>
+                                        <img src={user.icon} />
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        primary={user.name}
+                                        secondary={"@" + user.id}
+                                    />
+                                </Link>
+                            </ListItem>
+                        )
+                    ) :
+                    (
+                        <Typography component="p">
+                            ブロックしているユーザーがいません。
+                        </Typography>
+                    )
+            }
         </List>
     );
 }
