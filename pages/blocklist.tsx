@@ -32,7 +32,7 @@ BlocklistPage.getInitialProps = async (ctx: NextPageContext) => {
     }
 
     let blockedUser: User[] = [];
-    const res = await getBlocklist(auth.token);
+    const res = await getBlocklist(auth.token, "");
     for (var userId of res.blocklist) {
         console.log(userId);
         let user = await getUser(auth.token, userId);
